@@ -18,6 +18,7 @@ window.onload = function() {
   //Funcion Carta aleatoria
 
   function randomCarrd() {
+    cuerpo.innerHTML=""
     let valor = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
     let figura = ["♤", "♧", "⟡", "♡"];
     let randomNumber = Math.floor(Math.random() * 13);
@@ -27,12 +28,14 @@ window.onload = function() {
     //Contenedor de carta 
 
   let contenedorCarta = document.createElement("div");
+  
   contenedorCarta.setAttribute("class", "card d-flex border border-3 rounded-3 shadow  mb-5");
   contenedorCarta.style.width = "300px";
   contenedorCarta.style.height = "400px";
   cuerpo.appendChild(contenedorCarta);
 
   //Carta 
+  
   //Carta Header
   //Creacion Div superior carta
   let divCartaHeader = document.createElement("div");
@@ -91,16 +94,11 @@ if (array1[1] === "⟡" || array1[1] ==="♡"){
   
  //Boton de cambio de carta
   const boton = document.createElement("button");
+  let divBoton = document.getElementById("boton");
   boton.setAttribute("class", "btn btn-primary d-block my-3");
-  cuerpo.appendChild(boton);
+  divBoton.appendChild(boton);
   boton.addEventListener('click', randomCarrd);
 
-  
-
- 
-
-
-  
 
 
 boton.innerHTML= "Nueva Carta"
