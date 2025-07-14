@@ -9,9 +9,10 @@ window.onload = function() {
    //Cuerpo completo de sitio web
 
   let cuerpo = document.getElementById("cuerpo");
-  cuerpo.style.background = "#9acded";
-  cuerpo.style.height = "100vh";
-  cuerpo.setAttribute("class", "container-fluid  d-flex flex-column align-items-center");
+  let webs= document.getElementById("webs");
+  webs.style.background = "#9acded";
+  webs.style.height = "100vh";
+  webs.setAttribute("class", "container-fluid  d-flex flex-column align-items-center");
 
   //Estructura de Carta 
 
