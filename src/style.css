@@ -1,5 +1,15 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 body{
-    background: white;
+    background: #9acded;
 }
+
+
+h1{
+    
+    font-family: "Lily Script One", system-ui;
+    
+    font-style: normal;
+    color: #042066;
+}
+
