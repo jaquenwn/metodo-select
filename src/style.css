@@ -1,67 +1,66 @@
-body {
-  background-image: url("https://i.postimg.cc/nLVQ0K80/final.png");
-  background-size: cover;
-  background-position: center;
-  font-family: "Cinzel", serif;
-  color: #fff8e6;
-}
+window.onload = () => {
+  console.log("🃏 Proyecto de cartas medievales listo!");
 
-h1 {
-  font-size: 2.5rem;
-  padding: 10px;
-  text-shadow: 2px 2px 4px #000;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 12px;
-}
+  const drawBtn = document.querySelector("#draw-btn");
+  const sortBtn = document.querySelector("#sort-btn");
+  const board = document.querySelector("#board");
+  const log = document.querySelector("#log");
+  const input = document.querySelector("#card-count");
 
-.medieval-btn {
-  font-weight: bold;
-  font-size: 1rem;
-  border-radius: 8px;
-  text-shadow: 1px 1px 2px #000;
-}
+  let cards = [];
 
-.card {
-  width: 80px;
-  height: 120px;
-  background-image: url("https://i.postimg.cc/nLVQ0K80/final.png");
-  background-size: cover;
-  background-position: center;
-  font-size: 28px;
-  font-weight: bold;
-  color: #fff4d6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #d8c293;
-  border-radius: 10px;
-  box-shadow: 2px 2px 8px #000;
-  transition: transform 0.3s ease;
-  animation: fadeIn 0.4s ease;
-}
-
-.card:hover {
-  transform: scale(1.1);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
+  function getRandomCard() {
+    return Math.floor(Math.random() * 100);
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
-#log {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fffce2;
-  padding: 15px;
-  border-radius: 8px;
-  margin: 20px auto;
-  width: 90%;
-  max-width: 800px;
-  font-family: monospace;
-}
+  function createCardHTML(value) {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.textContent = value;
+    return card;
+  }
+
+  function renderCards(array) {
+    board.innerHTML = "";
+    array.forEach((value) => {
+      board.appendChild(createCardHTML(value));
+    });
+  }
+
+  drawBtn.addEventListener("click", () => {
+    const count = parseInt(input.value);
+    if (isNaN(count) || count < 1) return;
+
+    cards = [];
+    for (let i = 0; i < count; i++) {
+      cards.push(getRandomCard());
+    }
+
+    console.log("Cartas sorteadas:", cards);
+    renderCards(cards);
+    log.innerHTML = "";
+  });
+
+  sortBtn.addEventListener("click", () => {
+    const arr = [...cards];
+    const logSteps = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      let minIdx = i;
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[j] < arr[minIdx]) {
+          minIdx = j;
+        }
+      }
+      [arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
+      logSteps.push([...arr]);
+    }
+
+    log.innerHTML = logSteps
+      .map((step, i) => `<p><strong>Paso ${i + 1}:</strong> ${step.join(", ")}</p>`)
+      .join("");
+
+    renderCards(arr);
+  });
+};
+
