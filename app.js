@@ -7,6 +7,9 @@ let currentCards = [];
 let sortingLog = [];
 let isAnimating = false;
 
+
+
+
 // DOM elements
 const cardCountInput = document.getElementById('cardCount');
 const drawBtn = document.getElementById('drawBtn');
@@ -14,6 +17,7 @@ const sortBtn = document.getElementById('sortBtn');
 const helpBtn = document.getElementById('helpBtn');
 const cardContainer = document.getElementById('cardContainer');
 const sortingLogContainer = document.getElementById('sortingLog');
+
 const modal = document.getElementById('algorithmModal');
 const closeBtn = document.getElementsByClassName('close')[0];
 
@@ -59,14 +63,46 @@ function generateRandomCards(count) {
     return cards;
 }
 
+// Get medieval character and emblem for card
+function getMedievalCardData(card) {
+    const characters = {
+        'A': '👑', '2': '🏰', '3': '⚔️', '4': '🛡️', '5': '🏹', '6': '🗡️', '7': '🏺', '8': '🏴', '9': '🦅', '10': '🐎',
+        'J': '🤴', 'Q': '👸', 'K': '🤴'
+    };
+    
+    const emblems = {
+        '♠': '🗡️', '♥': '❤️', '♦': '💎', '♣': '🍀'
+    };
+    
+    const funBackgrounds = {
+        '♠': '🌟', '♥': '✨', '♦': '💫', '♣': '🌙'
+    };
+    
+    return {
+        character: characters[card.value] || '🏰',
+        emblem: emblems[card.suit] || '🏰',
+        background: funBackgrounds[card.suit] || '🌟'
+    };
+}
+
 // Create HTML for a single card
 function createCardElement(card, index, additionalClass = '') {
     const cardElement = document.createElement('div');
     cardElement.className = `card ${card.color} ${additionalClass}`;
     cardElement.setAttribute('data-index', index);
     
+    // Get medieval character and shield emblem based on card
+    const medievalData = getMedievalCardData(card);
+    
     cardElement.innerHTML = `
         <div class="value">${card.value}</div>
+        <div class="medieval-illustration">
+            <div class="fun-background">${medievalData.background}</div>
+            <div class="medieval-character">${medievalData.character}</div>
+            <div class="heraldic-shield">
+                <div class="shield-emblem">${medievalData.emblem}</div>
+            </div>
+        </div>
         <div class="suit">${card.suit}</div>
         <div class="value-bottom">${card.value}</div>
     `;
