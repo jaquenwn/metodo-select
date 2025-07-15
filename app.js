@@ -11,12 +11,18 @@ let isAnimating = false;
 const cardCountInput = document.getElementById('cardCount');
 const drawBtn = document.getElementById('drawBtn');
 const sortBtn = document.getElementById('sortBtn');
+const helpBtn = document.getElementById('helpBtn');
 const cardContainer = document.getElementById('cardContainer');
 const sortingLogContainer = document.getElementById('sortingLog');
+const modal = document.getElementById('algorithmModal');
+const closeBtn = document.getElementsByClassName('close')[0];
 
 // Initialize event listeners
 drawBtn.addEventListener('click', drawCards);
 sortBtn.addEventListener('click', startSorting);
+helpBtn.addEventListener('click', openModal);
+closeBtn.addEventListener('click', closeModal);
+window.addEventListener('click', outsideClick);
 
 // Card class to represent individual cards
 class Card {
@@ -267,6 +273,21 @@ function init() {
     console.log('Aplicación inicializada');
     // Draw initial cards
     drawCards();
+}
+
+// Modal functions
+function openModal() {
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+function outsideClick(e) {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
 }
 
 // Start the application when DOM is loaded
