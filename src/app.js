@@ -10,7 +10,6 @@ window.onload = function () {
 
   let cuerpo = document.getElementById("cuerpo");
   let webs = document.getElementById("webs");
-  webs.style.background = "#9acded";
   webs.style.height = "100vh";
   webs.setAttribute("class", "container-fluid  d-flex flex-column align-items-center");
   cuerpo.setAttribute("class", " justify-content-center d-flex align-items-center");
@@ -39,12 +38,13 @@ window.onload = function () {
 
 
     let mazo = document.getElementById('valor').value;
-
+    let array2= []
     for (let i = 0; i < mazo; i++) {
-      let randomNumber = valor[Math.floor(Math.random() * valor.length)]
-      let randomfig = figura[Math.floor(Math.random() * figura.length)]
-      let array1 = [randomNumber, randomfig];
-      console.log(array1, i)
+      let randomNumber = valor[Math.floor(Math.random() * valor.length)];
+      let randomfig = figura[Math.floor(Math.random() * figura.length)];
+      let array1 = {n: randomNumber, f: randomfig};
+      console.log(array1, i);
+      
 
       //Contenedor de carta 
 
@@ -65,7 +65,7 @@ window.onload = function () {
       //Figura a mostrar
       let figure1 = document.createElement("p");
       figure1.setAttribute("id", "top-figure");
-      figure1.innerHTML = array1[1];
+      figure1.innerHTML = array1.f;
       figure1.setAttribute("class", "fs-2");
 
       //Anexo de texto y header al contenedor
@@ -80,7 +80,7 @@ window.onload = function () {
 
       //Numero a mostrar
       let cardnum = document.createElement("h1");
-      cardnum.innerHTML = array1[0];
+      cardnum.innerHTML = array1.n;
       cardnum.setAttribute("class", "display-6");
       cardnum.setAttribute("id", "main-text");
 
@@ -96,7 +96,7 @@ window.onload = function () {
       //Figura a mostrar
       let figure2 = document.createElement("p");
       figure2.setAttribute("id", "bottom-figure");
-      figure2.innerHTML = array1[1];
+      figure2.innerHTML = array1.f;
       figure2.setAttribute("class", "fs-2 ");
 
       //Anexo de texto y header al contenedor
@@ -106,12 +106,14 @@ window.onload = function () {
 
       //cambio de color de fuente
 
-      if (array1[1] === "⟡" || array1[1] === "♡") {
+      if (array1.f === "⟡" || array1.f === "♡") {
         figure1.setAttribute("class", " text-danger fs-2");
         figure2.setAttribute("class", "text-danger fs-2");
       }
+      array2.push(array1)
     }
 
+    console.log(array2)
   };
 
 
