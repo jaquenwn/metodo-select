@@ -1,0 +1,65 @@
+window.onload = () => {
+  console.log("🃏 Proyecto de cartas medievales listo!");
+
+  const drawBtn = document.querySelector("#draw-btn");
+  const sortBtn = document.querySelector("#sort-btn");
+  const board = document.querySelector("#board");
+  const log = document.querySelector("#log");
+  const input = document.querySelector("#card-count");
+
+  let cards = [];
+
+  function getRandomCard() {
+    return Math.floor(Math.random() * 100);
+  }
+
+  function createCardHTML(value) {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.textContent = value;
+    return card;
+  }
+
+  function renderCards(array) {
+    board.innerHTML = "";
+    array.forEach((value) => {
+      board.appendChild(createCardHTML(value));
+    });
+  }
+
+  drawBtn.addEventListener("click", () => {
+    const count = parseInt(input.value);
+    if (isNaN(count) || count < 1) return;
+
+    cards = [];
+    for (let i = 0; i < count; i++) {
+      cards.push(getRandomCard());
+    }
+
+    console.log("Cartas sorteadas:", cards);
+    renderCards(cards);
+    log.innerHTML = "";
+  });
+
+  sortBtn.addEventListener("click", () => {
+    const arr = [...cards];
+    const logSteps = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      let minIdx = i;
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[j] < arr[minIdx]) {
+          minIdx = j;
+        }
+      }
+      [arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
+      logSteps.push([...arr]);
+    }
+
+    log.innerHTML = logSteps
+      .map((step, i) => `<p><strong>Paso ${i + 1}:</strong> ${step.join(", ")}</p>`)
+      .join("");
+
+    renderCards(arr);
+  });
+};
