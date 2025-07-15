@@ -1,5 +1,67 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
+body {
+  background-image: url("https://i.postimg.cc/nLVQ0K80/final.png");
+  background-size: cover;
+  background-position: center;
+  font-family: "Cinzel", serif;
+  color: #fff8e6;
+}
 
-body{
-    background: white;
+h1 {
+  font-size: 2.5rem;
+  padding: 10px;
+  text-shadow: 2px 2px 4px #000;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+}
+
+.medieval-btn {
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.card {
+  width: 80px;
+  height: 120px;
+  background-image: url("https://i.postimg.cc/nLVQ0K80/final.png");
+  background-size: cover;
+  background-position: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff4d6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #d8c293;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px #000;
+  transition: transform 0.3s ease;
+  animation: fadeIn 0.4s ease;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#log {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fffce2;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+  font-family: monospace;
 }
