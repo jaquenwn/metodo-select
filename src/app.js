@@ -240,6 +240,11 @@
    // Auto-scroll to bottom
   sortingLogContainer.scrollTop = sortingLogContainer.scrollHeight;
 
+  const drawBtn = document.querySelector("#draw-btn");
+  const sortBtn = document.querySelector("#sort-btn");
+  const board = document.querySelector("#board");
+  const log = document.querySelector("#log");
+  const input = document.querySelector("#card-count");
 
    // Bubble sort algorithm with visualization
   async function bubbleSort(cards) {
