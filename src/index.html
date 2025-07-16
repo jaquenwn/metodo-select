@@ -37,7 +37,7 @@
   <div id="algorithmModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h2>Algoritmo de Ordenamiento por Selección</h2>
+    
       <div class="algorithm-explanation">
         <p><strong>Cómo funciona el Ordenamiento por Selección:</strong></p>
         <ol>
@@ -46,15 +46,20 @@
           <li><strong>Repetir:</strong> Avanza a la siguiente posición y encuentra la carta más pequeña en la porción restante no ordenada.</li>
           <li><strong>Continuar:</strong> Sigue haciendo esto hasta que todas las cartas estén en sus posiciones correctas.</li>
         </ol>
-        <p><strong>Indicadores Visuales:</strong></p>
-        <ul>
-          <li><span class="indicator selected"></span> <strong>Verde:</strong> Posición actual siendo llenada</li>
-          <li><span class="indicator comparing"></span> <strong>Amarillo:</strong> Cartas siendo comparadas</li>
-          <li><span class="indicator sorted"></span> <strong>Azul:</strong> Cartas ya ordenadas</li>
         </ul>
         <p><strong>Complejidad de Tiempo:</strong> O(n²) - Siempre hace n(n-1)/2 comparaciones</p>
         <p><strong>Complejidad de Espacio:</strong> O(1) - Solo usa una cantidad constante de espacio extra</p>
       </div>
+    
+      <div class="algorithm-explanation">
+        <p><strong>Cómo funciona el Ordenamiento Burbuja:</strong></p>
+        <ol>
+          <li><strong>Comparar por pares:</strong> Desde la primera posición compara con la siguiente y determina la mayor entre ellas</li>
+          <li><strong>Intercambiar:</strong> Si la primera carta es mayor guarda el valor temporalmente e intercambia el index con la carta menor.</li>
+          <li><strong>Repetir:</strong> Repite este proceso para cada carta por cada posicion del arreglo.</li>
+        </ol>
+        </ul>
+       </div>
     </div>
   </div>
 

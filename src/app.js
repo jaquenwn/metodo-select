@@ -253,7 +253,7 @@
        renderCards(cards, { selected: [j], sorted: j - 1 });
         await sleep(800);
 
-      for(let i = 0; i < l-1; i++){
+      for(let i = 0; i < l; i++){
         renderCards(cards, {
           comparing: [i, i+1],
           selected: [j],
@@ -261,17 +261,24 @@
         });
         await sleep(600);
 
-        if (cards[i]> cards[i+1]){
+        if (cards[i].numericValue> cards[i+1].numericValue){
           renderCards(cards, {
-          selected: [j, j + 1],
-          sorted: j - 1
+          comparing: [i, i + 1],
+          sorted: i - 1
           });
           await sleep(400);
 
           const aux = cards[i]
           cards[i] = cards[i+1]
-          cards[i+1] = aux       
+          cards[i+1] = aux
+
+          renderCards(cards, { sorted: i });
+          await sleep(400);
+        } else {
+          renderCards(cards, { sorted: i });
+          await sleep(400); 
         }
+        
       }
       addLogStep(stepCount++, cards, [], [], j);   
     }
