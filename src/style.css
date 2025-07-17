@@ -162,6 +162,9 @@ h1 {
   font-weight: 600;
   box-shadow: inset 0 2px 5px rgba(45, 25, 15, 0.3);
 }
+#sortSelectBtn{
+  display: none;
+}
 
 .btn {
   padding: 20px 40px;
