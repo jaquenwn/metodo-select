@@ -240,7 +240,7 @@
    // Auto-scroll to bottom
   sortingLogContainer.scrollTop = sortingLogContainer.scrollHeight;
 
-  const drawBtn = document.querySelector("#draw-btn");
+ 
   const sortBtn = document.querySelector("#sort-btn");
   const board = document.querySelector("#board");
   const log = document.querySelector("#log");
@@ -258,7 +258,7 @@
        renderCards(cards, { selected: [j], sorted: j - 1 });
         await sleep(800);
 
-      for(let i = 0; i < l; i++){
+      for(let i = 0; i < l-1; i++){
         renderCards(cards, {
           comparing: [i, i+1],
           selected: [j],
